@@ -1,8 +1,9 @@
 package it.unibo.mvc;
 
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Application controller. Performs the I/O.
@@ -43,10 +44,10 @@ public class Controller {
      * @param data the data to write
      */
     public void write(final String data) {
-        try (PrintStream ps = new PrintStream(this.file)) {
+        try (PrintStream ps = new PrintStream(this.file, StandardCharsets.UTF_8)) {
             ps.print(data);
-        } catch (final FileNotFoundException e) {
-            throw new IllegalStateException("File not found", e);
+        } catch (final IOException e) {
+            throw new IllegalStateException("IO error", e);
         }
     }
 }

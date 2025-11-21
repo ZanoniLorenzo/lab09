@@ -46,17 +46,23 @@ public final class SimpleGUI {
     }
 
     /**
+     * Displays the GUI.
+     */
+    private void display() {
+        final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        final int sw = (int) screen.getWidth();
+        final int sh = (int) screen.getHeight();
+        frame.setSize(sw / PROPORTION, sh / PROPORTION);
+        frame.setLocationByPlatform(true);
+        frame.setVisible(true);
+    }
+
+    /**
      * main method, starts the graphical application.
      * 
      * @param args ignored
      */
     public static void main(final String[] args) {
-        final SimpleGUI gui = new SimpleGUI();
-        final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-        final int sw = (int) screen.getWidth();
-        final int sh = (int) screen.getHeight();
-        gui.frame.setSize(sw / PROPORTION, sh / PROPORTION);
-        gui.frame.setLocationByPlatform(true);
-        gui.frame.setVisible(true);
+        new SimpleGUI().display();
     }
 }
