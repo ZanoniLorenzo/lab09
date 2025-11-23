@@ -41,7 +41,7 @@ public final class SimpleController implements Controller {
      */
     @Override
     public List<String> getHistory() {
-        return history;
+        return List.copyOf(this.history);
     }
 
     /**
